@@ -1,6 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <%= render 'layouts/errors', obj: @book %>
   		<h1>Editing Book</h1>
   		<%= render 'form', book: @book %>
   		<%= link_to 'Show', @book, class: "book_#{@book.id}" %> |
