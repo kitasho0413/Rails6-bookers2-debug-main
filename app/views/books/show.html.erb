@@ -42,13 +42,13 @@
               <% end %>
             </td>
             <td><%= book_comment.comment %></td>
+            <td>
+              <% if book_comment.user == current_user %>
+                <%= link_to "Destroy", book_book_comment_path(@book, book_comment), method: :delete, class: "btn btn-danger pull-right" %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
-          <td>
-          <% if @book_comment.user == current_user %>
-            <%= link_to "Destroy", book_book_comment_path(book, book_comment), method: :delete, class: "btn btn-danger pull-right" %>
-          <% end %>
-        </td>
       </table>    
       <div>
         <%= form_with model: [@book, @book_comment] do |f| %>
