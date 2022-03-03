@@ -1,3 +1,4 @@
+
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
@@ -8,6 +9,7 @@
       <%= render 'form', book: @book %>
     </div>
     <div class='col-md-8 offset-md-1'>
+      <%= render 'searches/search' %>
       <h2>Books</h2>
       <%= render 'index', books: @books %>
     </div>
