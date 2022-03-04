@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   end
   
   get "search" => "searches#search"
+  get 'search_result' => "searches#search_result"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
