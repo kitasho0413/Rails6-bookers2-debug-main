@@ -1,4 +1,4 @@
-$(".favorite-btn").html("<%= escape_javascript(render partial: 'favorites/favorite-btn', locals: {book: @book}) %>");
+$("#book_<%= @book.id %> .favorite-btn").html("<%= j(render 'favorites/favorite-btn', book: @book) %>");
 
 alert('いいねが押せている');
 
