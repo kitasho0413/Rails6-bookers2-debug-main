@@ -3,8 +3,8 @@
   <tr>
     <td>
       <%= link_to user_path(book_comment.user) do %>
-        <%= image_tag book.user.get_profile_image, size:"50x50" %><br>
-        <%= book.user.name %>
+        <%= image_tag book_comment.user.get_profile_image, size:"50x50" %><br>
+        <%= book_comment.user.name %>
       <% end %>
     </td>
     <td><%= book_comment.comment %></td>
