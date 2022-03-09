@@ -1,0 +1,36 @@
+<div class="user-in">
+<% @entries.each do |e| %>
+    <h3><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%></a></strong></h3>
+<% end %>
+<p>2人のDM❤️</p>
+</div>
+
+<div class="dmMain">
+    <% @messages.each do |m| %>
+        <strong><%= m.body %></strong>
+        <small><%= m.user.email %>さん</small><hr>
+    <% end %>
+
+    <%= form_for @message do |f| %>
+    <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
+    <%= f.hidden_field :room_id, :value => @room.id %>
+    <br>
+    <%= f.submit "送信する" %>
+    <% end %>
+</div>
+
+<%= link_to "ユーザー一覧に戻る", users_path %>
+
+
+<style>
+.user-in{
+    text-align:center;
+    border:1px solid darkgray;
+    background-color:gainsboro;
+}
+.dmMain{
+    padding:30px;
+    border:1px solid darkgray;
+    background-color:gainsboro;
+}
+</style>
