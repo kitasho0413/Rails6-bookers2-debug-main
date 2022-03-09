@@ -7,6 +7,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = @book.user
     @book_comment = BookComment.new
+    impressionist(@book, nil, unique: [:ip_address])
   end
 
   def index
@@ -25,6 +26,7 @@ class BooksController < ApplicationController
     #@books = Book.all
     @book = Book.new
     @user = User.find(current_user.id)
+    
   end
 
   def create
