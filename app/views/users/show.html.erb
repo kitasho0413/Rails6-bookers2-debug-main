@@ -8,7 +8,9 @@
             <%= @msg %>
         <% else %>
             <% if @isRoom == true %>
+              <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
                 <p><%= link_to 'DMへ', room_path(@roomId) %></p>
+              <% end %>  
             <% else %>
                 <%= form_for @room do |f| %>
                     <%= fields_for @entry do |e|%>

@@ -1,6 +1,6 @@
 <div class="user-in">
 <% @entries.each do |e| %>
-    <h3><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%></a></strong></h3>
+    <h3><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%></a></strong></h3>
 <% end %>
 <p>2人のDM❤️</p>
 </div>
@@ -8,7 +8,7 @@
 <div class="dmMain">
     <% @messages.each do |m| %>
         <strong><%= m.body %></strong>
-        <small><%= m.user.email %>さん</small><hr>
+        <small><%= m.user.name %>さん</small><hr>
     <% end %>
 
     <%= form_for @message do |f| %>
