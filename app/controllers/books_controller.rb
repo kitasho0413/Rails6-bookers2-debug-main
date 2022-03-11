@@ -1,28 +1,30 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update]
+  impressionist :actions => [:show, :index]
 
   def show
     @new_book = Book.new
     @book = Book.find(params[:id])
+    impressionist(@book, nil, unique: [:ip_address])
     @user = @book.user
     @book_comment = BookComment.new
-    impressionist(@book, nil, unique: [:ip_address])
+   
   end
 
   def index
-    #to  = Time.current.at_beginning_of_day
-    #from  = (to - 6.day).at_end_of_day
-    #@books = Book.all.sort {|a,b| 
-      #b.favorites.where(created_at: from...to).size <=> 
-      #a.favorites.where(created_at: from...to).size
-    #}
-    to = Time.current.at_end_of_day
-    from = (to - 6.day).at_beginning_of_day
-    @books = Book.includes(:favorited_users).
-      sort_by {|x|
-        x.favorited_users.includes(:favorites).where(created_at: from...to).size
-      }.reverse
+    to  = Time.current.at_beginning_of_day
+    from  = (to - 6.day).at_end_of_day
+    @books = Book.all.sort {|a,b| 
+      b.favorites.size <=> 
+      a.favorites.size
+    }
+    #to = Time.current.at_end_of_day
+    #from = (to - 6.day).at_beginning_of_day
+    #@books = Book.includes(:favorited_users).
+      #sort_by {|x|
+        #x.favorited_users.includes(:favorites).where(created_at: from...to).size
+      #}.reverse
     #@books = Book.all
     @book = Book.new
     @user = User.find(current_user.id)
